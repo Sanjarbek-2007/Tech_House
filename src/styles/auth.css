@@ -1,0 +1,128 @@
+:root {
+    --primary-red: #ba0853;
+    --primary-blue: #0823c8;
+    --header-dark: #111111;
+    --transition: 0.3s ease;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.auth-container {
+    display: flex;
+    width: 900px;
+    height: 550px;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+/* Visual Side with your Red & Blue */
+.auth-visual {
+    flex: 1;
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-red));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding: 40px;
+    text-align: center;
+}
+
+.visual-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+/* Form Side */
+.auth-form-section {
+    flex: 1;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h2 {
+    color: var(--header-dark);
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+}
+img{
+    height: 125px;
+    width: 150px;
+}
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #eee;
+    border-radius: 6px;
+    outline: none;
+    transition: var(--transition);
+}
+
+.input-group input:focus {
+    border-color: var(--primary-blue);
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 14px;
+    background-color: var(--header-dark);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 10px;
+}
+
+.btn-submit:hover {
+    background-color: var(--primary-red);
+    transform: translateY(-2px);
+}
+
+.switch-auth {
+    margin-top: 20px;
+    font-size: 0.85rem;
+    text-align: center;
+    color: #666;
+}
+
+.switch-auth a {
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .auth-visual { display: none; }
+    .auth-container { width: 400px; height: auto; }
+}

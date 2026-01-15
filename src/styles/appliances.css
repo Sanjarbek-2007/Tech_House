@@ -1,0 +1,685 @@
+/* Appliances Page Layout */
+:root {
+    --bg-gray: #f2f4f7;
+    --text-main: #333;
+    --primary-blue: #0823c8;
+    /* Updated to match global.css */
+    --border-color: #eee;
+    --primary-red: #ba0853;
+}
+
+body {
+    background-color: var(--bg-gray);
+}
+
+
+.catalog-container {
+    max-width: 1400px;
+    margin: 20px auto;
+    padding: 0 16px;
+    display: flex;
+    gap: 24px;
+    position: relative;
+    padding-bottom: 80px;
+    /* Space for mobile bar */
+}
+
+/* Sidebar (Filters) */
+.catalog-sidebar {
+    width: 280px;
+    flex-shrink: 0;
+    background: white;
+    border-radius: 12px;
+    padding: 0;
+    height: fit-content;
+    display: block;
+    position: sticky;
+    top: 90px;
+    max-height: calc(100vh - 110px);
+    overflow-y: auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border: 1px solid #eee;
+}
+
+/* Custom Scrollbar for Sidebar */
+.catalog-sidebar::-webkit-scrollbar {
+    width: 4px;
+}
+
+.catalog-sidebar::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+
+/* Sticky Header inside sidebar */
+.filter-header-sticky {
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 10;
+    padding: 16px 20px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.filter-main-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+}
+
+.btn-clear-all {
+    font-size: 12px;
+    color: var(--primary-red);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.filter-group {
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.filter-title {
+    font-size: 15px;
+    font-weight: 600;
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    background: white;
+    transition: background 0.2s;
+    user-select: none;
+}
+
+.filter-title:hover {
+    background: #f9f9f9;
+}
+
+.filter-title i {
+    width: 16px;
+    height: 16px;
+    color: #999;
+    transition: transform 0.3s;
+}
+
+/* Collapsed state styling (JS needs to toggle a class, e.g., .collapsed) */
+.filter-group.collapsed .filter-options,
+.filter-group.collapsed .filter-content-pad {
+    display: none;
+}
+
+.filter-group.collapsed .filter-title i {
+    transform: rotate(180deg);
+}
+
+.filter-options {
+    padding: 0 20px 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.scrollable-options {
+    max-height: 200px;
+    overflow-y: auto;
+    padding-right: 10px;
+    /* Space for scrollbar */
+}
+
+/* Scrollbar for filter lists */
+.scrollable-options::-webkit-scrollbar {
+    width: 4px;
+}
+
+.scrollable-options::-webkit-scrollbar-thumb {
+    background: #ddd;
+    border-radius: 4px;
+}
+
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #555;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.checkbox-label:hover {
+    color: var(--primary-blue);
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--primary-blue);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Count Badge */
+.filter-count {
+    color: #999;
+    font-size: 12px;
+    margin-left: auto;
+    /* Push to right */
+}
+
+/* Price Slider Styling */
+.filter-content-pad {
+    padding: 0 20px 20px 20px;
+}
+
+.slider-container {
+    position: relative;
+    width: 100%;
+    height: 6px;
+    margin: 30px 0 20px 0;
+    /* Space for thumb */
+}
+
+.slider-track {
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background: #ddd;
+    border-radius: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Color range between thumbs - JS will update width/left */
+.slider-track-highlight {
+    /* Requires JS to insert a span or update gradient, easier to stick to basic range inputs overlapping */
+}
+
+input[type="range"] {
+    position: absolute;
+    pointer-events: none;
+    -webkit-appearance: none;
+    z-index: 2;
+    height: 4px;
+    width: 100%;
+    opacity: 0;
+    cursor: pointer;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* We need real visible sliders or a dual-slider library. 
+   Implementing Custom Dual Slider using standard CSS is tricky without a library.
+   Alternative: "Visual" track and 2 inputs. 
+   Better approach: Use the standard range inputs and overlay them. 
+*/
+
+/* Resetting Range Input Style for Dual Slider */
+.slider-container input[type="range"] {
+    -webkit-appearance: none;
+    pointer-events: none;
+    /* Let clicks pass through to track */
+    position: absolute;
+    height: 0;
+    width: 100%;
+    outline: none;
+    z-index: 3;
+    opacity: 1;
+    /* Visible thumbs */
+    background: transparent;
+    /* Transparent track */
+}
+
+.slider-container input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    pointer-events: all;
+    /* Capture clicks on thumb */
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: white;
+    border: 2px solid var(--primary-blue);
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    margin-top: -9px;
+    /* Centering helper if needed */
+    position: relative;
+    z-index: 4;
+}
+
+/* The visual track needs to be behind */
+.slider-track {
+    z-index: 1;
+}
+
+.price-inputs {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.price-inputs input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 13px;
+    text-align: center;
+}
+
+/* Mobile Footer for Sidebar */
+.sidebar-footer-mobile {
+    display: none;
+    /* Desktop hidden */
+    padding: 16px;
+    border-top: 1px solid #eee;
+    background: white;
+    position: sticky;
+    bottom: 0;
+}
+
+/* Main Content Area */
+.catalog-content {
+    flex: 1;
+}
+
+/* Breadcrumbs & Title */
+.catalog-header {
+    margin-bottom: 20px;
+}
+
+.breadcrumbs {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 8px;
+}
+
+.page-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+/* Toolbar (Sort & Mobile Filter Trigger) */
+.catalog-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    background: white;
+    padding: 12px 16px;
+    border-radius: 12px;
+}
+
+.sort-options {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    font-size: 14px;
+    color: #555;
+}
+
+.sort-link {
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+}
+
+.sort-link.active {
+    color: var(--primary-blue);
+    font-weight: 600;
+}
+
+.btn-filter-mobile {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: var(--primary-blue);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(8, 35, 200, 0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-filter-mobile:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(8, 35, 200, 0.3);
+}
+
+.btn-filter-mobile i {
+    width: 18px;
+    height: 18px;
+}
+
+/* Product Grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* Force 4 columns on PC */
+    gap: 16px;
+}
+
+/* Product Card Link Wrapper */
+.product-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+/* Card Overrides for Catalog */
+.card-item.product-card {
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+    transition: box-shadow 0.2s;
+    border: 1px solid transparent;
+    /* Align with reference style */
+    min-width: 0;
+    /* Fix flex overflow */
+}
+
+.card-item.product-card:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.prod-img-box {
+    width: 100%;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 8px;
+}
+
+.prod-img-box img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.prod-title {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
+    height: 40px;
+    /* Limit to 2 lines usually */
+    overflow: hidden;
+    margin-bottom: 4px;
+}
+
+.prod-price {
+    margin-top: auto;
+    /* Push price to bottom */
+}
+
+.prod-actions {
+    margin-top: 12px;
+    display: flex;
+    gap: 8px;
+}
+
+.btn-cart-add {
+    flex: 1;
+    background: #f0f0f0;
+    /* Default gray for catalog buttons usually */
+    color: #333;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: background 0.2s;
+}
+
+.btn-cart-add:hover {
+    background: var(--primary-blue);
+    color: white;
+}
+
+/* Quantity Controls */
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    background: #f0f0f0;
+    /* Gray background */
+    border-radius: 8px;
+    padding: 4px;
+    height: 40px;
+    width: 100%;
+}
+
+.qty-btn {
+    background: var(--primary-blue);
+    /* Blue buttons */
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.qty-btn:hover {
+    background: #061cba;
+    /* Darker blue on hover */
+    transform: scale(1.05);
+}
+
+.qty-btn:active {
+    transform: scale(0.95);
+}
+
+.qty-display {
+    color: #333;
+    /* Dark text */
+    font-weight: 700;
+    font-size: 1.1rem;
+    flex-grow: 1;
+    text-align: center;
+}
+
+/* Wishlist Button */
+.wishlist-btn {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    color: #666;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.wishlist-btn:hover {
+    border-color: var(--primary-red);
+    color: var(--primary-red);
+    background: white;
+    transform: scale(1.1);
+}
+
+.wishlist-btn.active {
+    background: var(--primary-red);
+    border-color: var(--primary-red);
+    color: white;
+}
+
+/* Wishlist Button Inline (next to Add to Cart) */
+.wishlist-btn-inline {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 2px solid var(--primary-red);
+    background: white;
+    color: var(--primary-red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.wishlist-btn-inline:hover {
+    background: var(--primary-red);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(186, 8, 83, 0.3);
+}
+
+.wishlist-btn-inline.active {
+    background: var(--primary-red);
+    color: white;
+    box-shadow: 0 4px 12px rgba(186, 8, 83, 0.3);
+}
+
+.wishlist-btn-inline.active:hover {
+    background: #9a0645;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.page-btn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 500;
+}
+
+.page-btn.active {
+    background: var(--primary-blue);
+    color: white;
+    border-color: var(--primary-blue);
+}
+
+/* Mobile Responsive */
+@media (max-width: 992px) {
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+        /* 3 columns on tablet/smaller desktops */
+    }
+
+    /* ... existing sidebar styles ... */
+    .catalog-sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 300px;
+        z-index: 3000;
+        /* Higher than mobile bar */
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        box-shadow: 4px 0 20px rgba(0, 0, 0, 0.1);
+        overflow-y: auto;
+        border-radius: 0;
+        /* Reset radius for full height mobile */
+        max-height: 100vh;
+    }
+
+    .catalog-sidebar.open {
+        transform: translateX(0);
+    }
+
+    .sidebar-footer-mobile {
+        display: block;
+        /* Show on mobile */
+    }
+
+    .sidebar-mask {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 2999;
+    }
+
+    .sidebar-mask.active {
+        display: block;
+    }
+
+    .btn-filter-mobile {
+        display: flex;
+    }
+
+    .catalog-container {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 columns on mobile/tablet portrait */
+    }
+}
+
+@media (max-width: 480px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* Explicitly keep 2 columns on small mobile */
+        gap: 8px;
+    }
+
+    .card-item.product-card {
+        padding: 12px;
+    }
+
+    .prod-actions .btn-cart-add span {
+        display: none;
+        /* Hide text, show icon only on small screens if needed, or keep text small */
+    }
+
+    .prod-title {
+        font-size: 13px;
+    }
+}

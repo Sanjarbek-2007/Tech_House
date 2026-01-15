@@ -1,0 +1,249 @@
+/* Purchase History Premium Styles */
+
+.history-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+    min-height: 60vh;
+}
+
+.page-title {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 30px;
+    color: #111;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* List Animation */
+#history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Order Card */
+.order-card {
+    background: white;
+    border-radius: 16px;
+    padding: 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid #eee;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.order-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Header */
+.order-header {
+    background: #f9f9f9;
+    padding: 15px 24px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.order-meta {
+    display: flex;
+    gap: 24px;
+    font-size: 0.9rem;
+    color: #555;
+    font-weight: 500;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.order-status {
+    padding: 6px 14px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-delivered {
+    background: #e6f4ea;
+    color: #1e8e3e;
+}
+
+.status-processing {
+    background: #e3f2fd;
+    color: #1976d2;
+}
+
+.status-cancelled {
+    background: #fce8e6;
+    color: #c5221f;
+}
+
+/* Body */
+.order-body {
+    padding: 24px;
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 30px;
+}
+
+/* Items Scroll */
+.order-items {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    -webkit-overflow-scrolling: touch;
+}
+
+.order-items::-webkit-scrollbar {
+    height: 6px;
+}
+
+.order-items::-webkit-scrollbar-thumb {
+    background: #ddd;
+    border-radius: 3px;
+}
+
+.item-thumb-wrapper {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.mini-thumb {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    object-fit: contain;
+    background: #fff;
+    border: 1px solid #f0f0f0;
+    padding: 6px;
+    transition: transform 0.2s;
+}
+
+.mini-thumb:hover {
+    transform: scale(1.05);
+    border-color: #ddd;
+}
+
+.item-badge {
+    position: absolute;
+    bottom: -4px;
+    right: -4px;
+    background: #333;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Info Side */
+.order-info-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-left: 1px solid #eee;
+    padding-left: 30px;
+}
+
+.order-summary-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.order-total-large {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #111;
+    margin: 10px 0 16px 0;
+}
+
+.reorder-btn {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    background: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.reorder-btn:hover {
+    background: #f5f5f5;
+    border-color: #333;
+    transform: translateY(-1px);
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 80px 20px;
+    color: #888;
+    background: #f9f9f9;
+    border-radius: 20px;
+    border: 2px dashed #ddd;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .order-body {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .order-info-side {
+        border-left: none;
+        padding-left: 0;
+        border-top: 1px solid #eee;
+        padding-top: 20px;
+    }
+
+    .order-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .order-status {
+        align-self: flex-start;
+    }
+
+    .order-meta {
+        width: 100%;
+        justify-content: space-between;
+    }
+}

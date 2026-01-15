@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: aliceblue;
+    }
+
+    form {
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      width: 30%;
+      gap: 5px;
+      padding: 10px;
+      border-radius: 5px;
+      margin-top: 100px;
+    }
+    input {
+      padding: 8px;
+      border: 1px solid gray;
+      border-radius: 5px;
+    }
+    h1 {
+      text-align: center;
+    }
+
+    input[type="submit"] {
+      background-color: rgb(6, 108, 108);
+      color: white;
+      border: none;
+    }
+
+    #status {
+      background-color: transparent;
+      border: none;
+      text-align: right;
+      color: blue;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+<form action="">
+  <h1>Login</h1>
+  <label for="username">Username</label>
+  <input type="text" />
+  <label for="password">Password</label>
+  <input type="password" />
+  <button id="status">Don't have an account? Register</button>
+  <input id="submitBtn" type="submit" value="Login" />
+</form>
+<script src="app.js">
+
+  const statusBtn = document.getElementById("status")
+  statusBtn.addEventListener("click", function (event){
+    const header = document.querySelector("h1")
+    event.preventDefault();
+    if (header.innerText == "Login"){
+
+      header.innerText = "Register"
+      statusBtn.innerText="Already have an account? Login"
+      loop(inputs, labels[i])
+    }
+  })
+
+  const header = document.querySelector("h1")
+  const s
+</script>
+</body>
+</html>

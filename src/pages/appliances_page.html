@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <title>Tech house</title>
+  <link rel="stylesheet" href="../styles/global.css">
+  <link rel="stylesheet" href="../styles/appliances.css">
+  <link rel="stylesheet" href="../styles/toast.css">
+  <link rel="icon" href="../photos/icons/logo_w.svg">
+</head>
+
+<body>
+
+
+  <!-- OVERLAYS -->
+  <div class="sidebar-overlay" id="overlay" onclick="toggleMenu()"></div>
+
+  <!-- MOBILE SIDEBAR MENU -->
+  <div class="mobile-sidebar" id="mobileSidebar">
+    <div class="sidebar-mobile-header">
+      <span>Product Categories</span>
+      <i data-lucide="x" onclick="toggleMenu()"></i>
+    </div>
+
+    <div class="cat-group" onclick="this.classList.toggle('open')">
+      <div class="cat-header"><i data-lucide="utensils"></i> <a
+          href="appliances_page.html?category=Kitchen Appliances">Kitchen Appliances</a></div>
+      <ul class="cat-list">
+        <li><a href="appliances_page.html?search=Stand Mixers">Stand Mixers</a></li>
+        <li><a href="appliances_page.html?search=Microwave">Microwave Ovens</a></li>
+        <li><a href="appliances_page.html?search=Convection">Convection Ovens</a></li>
+        <li><a href="appliances_page.html?search=Blender">Power Blenders</a></li>
+        <li><a href="appliances_page.html?search=Air Fryer">Air Fryers</a></li>
+        <li><a href="appliances_page.html?search=Food Processor">Food Processors</a></li>
+        <li><a href="appliances_page.html?search=Coffee">Coffee Makers</a></li>
+        <li><a href="appliances_page.html?search=Toaster">Toasters & Grills</a></li>
+      </ul>
+    </div>
+
+    <div class="cat-group" onclick="this.classList.toggle('open')">
+      <div class="cat-header"><i data-lucide="wind"></i> <a
+          href="appliances_page.html?category=Cleaning Appliances">Cleaning Appliances</a></div>
+      <ul class="cat-list">
+        <li><a href="appliances_page.html?search=Robot Vacuum">Robot Vacuums</a></li>
+        <li><a href="appliances_page.html?search=Steam Cleaner">Steam Cleaners</a></li>
+        <li><a href="appliances_page.html?search=Wet Vacuum">Wet/Dry Vacuums</a></li>
+        <li><a href="appliances_page.html?search=Air Purifier">Air Purifiers</a></li>
+        <li><a href="appliances_page.html?search=Pressure Washer">Pressure Washers</a></li>
+        <li><a href="appliances_page.html?search=Handheld Vacuum">Handheld Vacuums</a></li>
+        <li><a href="appliances_page.html?search=Carpet Cleaner">Carpet Cleaners</a></li>
+        <li><a href="appliances_page.html?search=Window Cleaner">Window Cleaners</a></li>
+      </ul>
+    </div>
+
+    <div class="cat-group" onclick="this.classList.toggle('open')">
+      <div class="cat-header"><i data-lucide="thermometer"></i> <a
+          href="appliances_page.html?category=Heating Appliances">Heating & Cooling</a></div>
+      <ul class="cat-list">
+        <li><a href="appliances_page.html?search=Heater">Space Heaters</a></li>
+        <li><a href="appliances_page.html?search=Fan">Ceiling Fans</a></li>
+        <li><a href="appliances_page.html?search=Air Conditioner">Air Conditioners</a></li>
+        <li><a href="appliances_page.html?search=Dehumidifier">Dehumidifiers</a></li>
+        <li><a href="appliances_page.html?search=Cooler">Evaporative Coolers</a></li>
+        <li><a href="appliances_page.html?search=Heating Pad">Heating Pads</a></li>
+        <li><a href="appliances_page.html?search=Electric Blanket">Electric Blankets</a></li>
+        <li><a href="appliances_page.html?search=Portable AC">Portable AC Units</a></li>
+      </ul>
+    </div>
+
+    <div class="cat-group" onclick="this.classList.toggle('open')">
+      <div class="cat-header"><i data-lucide="scissors"></i> <a
+          href="appliances_page.html?category=Personal Care">Personal Care</a></div>
+      <ul class="cat-list">
+        <li><a href="appliances_page.html?search=Hair Dryer">Hair Dryers</a></li>
+        <li><a href="appliances_page.html?search=Straightener">Hair Straighteners</a></li>
+        <li><a href="appliances_page.html?search=Shaver">Electric Shavers</a></li>
+        <li><a href="appliances_page.html?search=Trimmer">Beard Trimmers</a></li>
+        <li><a href="appliances_page.html?search=Massage">Massage Guns</a></li>
+        <li><a href="appliances_page.html?search=Toothbrush">Toothbrushes</a></li>
+        <li><a href="appliances_page.html?search=Epilator">Epilators</a></li>
+        <li><a href="appliances_page.html?search=Skin Care">Skin Care Devices</a></li>
+      </ul>
+    </div>
+
+    <div class="cat-group" onclick="this.classList.toggle('open')">
+      <div class="cat-header"><i data-lucide="home"></i> <a href="appliances_page.html?category=Smart Home">Smart
+          Home</a></div>
+      <ul class="cat-list">
+        <li><a href="appliances_page.html?search=Smart Light">Smart Lights</a></li>
+        <li><a href="appliances_page.html?search=Smart Plug">Smart Plugs</a></li>
+        <li><a href="appliances_page.html?search=Camera">Security Cameras</a></li>
+        <li><a href="appliances_page.html?search=Thermostat">Smart Thermostats</a></li>
+        <li><a href="appliances_page.html?search=Voice Assistant">Voice Assistants</a></li>
+        <li><a href="appliances_page.html?search=Lock">Smart Locks</a></li>
+        <li><a href="appliances_page.html?search=Robot Mop">Robot Mops</a></li>
+        <li><a href="appliances_page.html?search=Sensor">Smart Sensors</a></li>
+      </ul>
+    </div>
+
+    <div class="cat-group" onclick="this.classList.toggle('open')">
+      <div class="cat-header"><i data-lucide="zap"></i> <a href="appliances_page.html?category=Other Appliances">Other
+          Appliances</a></div>
+      <ul class="cat-list">
+        <li><a href="appliances_page.html?search=Water Purifier">Water Purifiers</a></li>
+        <li><a href="appliances_page.html?search=Iron">Irons & Steamers</a></li>
+        <li><a href="appliances_page.html?search=Sewing">Sewing Machines</a></li>
+        <li><a href="appliances_page.html?search=Kettle">Electric Kettles</a></li>
+        <li><a href="appliances_page.html?search=Rice Cooker">Rice Cookers</a></li>
+        <li><a href="appliances_page.html?search=Grill">Indoor Grills</a></li>
+        <li><a href="appliances_page.html?search=Waffle">Waffle Makers</a></li>
+        <li><a href="appliances_page.html?search=Steamer">Food Steamers</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- DESKTOP HEADER -->
+  <header class="main-header" id="mainHeader">
+    <nav class="navbar-container">
+      <a href="../../index.html" class="logo">
+        <img src="../../src/photos/logo_black.png" alt="Logo" class="logo-dark">
+        <img src="../../src/photos/logo_w.png" alt="Logo" class="logo-light">
+      </a>
+
+      <div class="desktop-catalog">
+        <button class="btn-catalog">
+          <i data-lucide="layout-grid"></i> Catalog
+        </button>
+        <div class="mega-menu-desktop">
+          <div class="menu-col">
+            <h4><i data-lucide="utensils"></i> <a href="appliances_page.html?category=Kitchen Appliances">Kitchen
+                Appliances</a></h4>
+            <ul>
+              <li><a href="appliances_page.html?search=Stand Mixers">Stand Mixers</a></li>
+              <li><a href="appliances_page.html?search=Microwave">Microwave Ovens</a></li>
+              <li><a href="appliances_page.html?search=Convection">Convection Ovens</a></li>
+              <li><a href="appliances_page.html?search=Blender">Power Blenders</a></li>
+              <li><a href="appliances_page.html?search=Air Fryer">Air Fryers</a></li>
+              <li><a href="appliances_page.html?search=Food Processor">Food Processors</a></li>
+              <li><a href="appliances_page.html?search=Coffee">Coffee Makers</a></li>
+              <li><a href="appliances_page.html?search=Toaster">Toasters & Grills</a></li>
+            </ul>
+          </div>
+          <div class="menu-col">
+            <h4><i data-lucide="wind"></i> <a href="appliances_page.html?category=Cleaning Appliances">Cleaning
+                Appliances</a></h4>
+            <ul>
+              <li><a href="appliances_page.html?search=Robot Vacuum">Robot Vacuums</a></li>
+              <li><a href="appliances_page.html?search=Steam Cleaner">Steam Cleaners</a></li>
+              <li><a href="appliances_page.html?search=Wet Vacuum">Wet/Dry Vacuums</a></li>
+              <li><a href="appliances_page.html?search=Air Purifier">Air Purifiers</a></li>
+              <li><a href="appliances_page.html?search=Pressure Washer">Pressure Washers</a></li>
+              <li><a href="appliances_page.html?search=Handheld Vacuum">Handheld Vacuums</a></li>
+              <li><a href="appliances_page.html?search=Carpet Cleaner">Carpet Cleaners</a></li>
+              <li><a href="appliances_page.html?search=Window Cleaner">Window Cleaners</a></li>
+            </ul>
+          </div>
+          <div class="menu-col">
+            <h4><i data-lucide="thermometer"></i> <a href="appliances_page.html?category=Heating Appliances">Heating &
+                Cooling</a></h4>
+            <ul>
+              <li><a href="appliances_page.html?search=Heater">Space Heaters</a></li>
+              <li><a href="appliances_page.html?search=Fan">Ceiling Fans</a></li>
+              <li><a href="appliances_page.html?search=Air Conditioner">Air Conditioners</a></li>
+              <li><a href="appliances_page.html?search=Dehumidifier">Dehumidifiers</a></li>
+              <li><a href="appliances_page.html?search=Cooler">Evaporative Coolers</a></li>
+              <li><a href="appliances_page.html?search=Heating Pad">Heating Pads</a></li>
+              <li><a href="appliances_page.html?search=Electric Blanket">Electric Blankets</a></li>
+              <li><a href="appliances_page.html?search=Portable AC">Portable AC Units</a></li>
+            </ul>
+          </div>
+          <div class="menu-col">
+            <h4><i data-lucide="scissors"></i> <a href="appliances_page.html?category=Personal Care">Personal Care</a>
+            </h4>
+            <ul>
+              <li><a href="appliances_page.html?search=Hair Dryer">Hair Dryers</a></li>
+              <li><a href="appliances_page.html?search=Straightener">Hair Straighteners</a></li>
+              <li><a href="appliances_page.html?search=Shaver">Electric Shavers</a></li>
+              <li><a href="appliances_page.html?search=Trimmer">Beard Trimmers</a></li>
+              <li><a href="appliances_page.html?search=Massage">Massage Guns</a></li>
+              <li><a href="appliances_page.html?search=Toothbrush">Toothbrushes</a></li>
+              <li><a href="appliances_page.html?search=Epilator">Epilators</a></li>
+              <li><a href="appliances_page.html?search=Skin Care">Skin Care Devices</a></li>
+            </ul>
+          </div>
+          <div class="menu-col">
+            <h4><i data-lucide="home"></i> <a href="appliances_page.html?category=Smart Home">Smart Home</a>
+            </h4>
+            <ul>
+              <li><a href="appliances_page.html?search=Smart Light">Smart Lights</a></li>
+              <li><a href="appliances_page.html?search=Smart Plug">Smart Plugs</a></li>
+              <li><a href="appliances_page.html?search=Camera">Security Cameras</a></li>
+              <li><a href="appliances_page.html?search=Thermostat">Smart Thermostats</a></li>
+              <li><a href="appliances_page.html?search=Voice Assistant">Voice Assistants</a></li>
+              <li><a href="appliances_page.html?search=Lock">Smart Locks</a></li>
+              <li><a href="appliances_page.html?search=Robot Mop">Robot Mops</a></li>
+              <li><a href="appliances_page.html?search=Sensor">Smart Sensors</a></li>
+            </ul>
+          </div>
+          <div class="menu-col">
+            <h4><i data-lucide="zap"></i> <a href="appliances_page.html?category=Other Appliances">Other
+                Appliances</a>
+            </h4>
+            <ul>
+              <li><a href="appliances_page.html?search=Water Purifier">Water Purifiers</a></li>
+              <li><a href="appliances_page.html?search=Iron">Irons & Steamers</a></li>
+              <li><a href="appliances_page.html?search=Sewing">Sewing Machines</a></li>
+              <li><a href="appliances_page.html?search=Kettle">Electric Kettles</a></li>
+              <li><a href="appliances_page.html?search=Rice Cooker">Rice Cookers</a></li>
+              <li><a href="appliances_page.html?search=Grill">Indoor Grills</a></li>
+              <li><a href="appliances_page.html?search=Waffle">Waffle Makers</a></li>
+              <li><a href="appliances_page.html?search=Steamer">Food Steamers</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="search-area">
+        <form class="search-form" id="searchForm">
+          <input aria-label="Search products" type="text" id="searchInput" placeholder="I'm shopping for..."
+            autocomplete="off">
+          <button type="submit" class="search-btn"><i data-lucide="search"></i></button>
+        </form>
+        <div class="search-results-dropdown">
+          <!-- Search results will be dynamically loaded here -->
+        </div>
+      </div>
+
+      <div class="user-nav">
+        <!-- User Account -->
+        <!-- User Account -->
+        <a href="auth_page.html" class="nav-link" id="nav-auth-link">
+          <i data-lucide="user"></i> <span>Account</span>
+        </a>
+
+        <a href="wishlist_page.html" class="nav-link">
+          <i data-lucide="heart"></i> <span>Wishlist</span>
+        </a>
+
+        <!-- Cart -->
+        <a href="cart_page.html" class="nav-link" style="position: relative;">
+          <i data-lucide="shopping-cart"></i>
+          Cart
+          <span class="cart-badge" id="cart-count"
+            style="display: none; background: red; color: white; font-size: 10px; border-radius: 50%; padding: 2px 6px;">0</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+
+  <!-- Auth & Cart Scripts -->
+  <script src="../scripts/auth.js"></script>
+  <script src="../scripts/cartManager.js"></script>
+
+  <div class="mobile-sidebar" id="mobileSidebar">
+    <div class="sidebar-mobile-header">
+      <span>Product Categories</span>
+      <i data-lucide="x" onclick="toggleMenu()"></i>
+    </div>
+
+    <div class="cat-group" onclick="this.classList.toggle('open')">
+      <div class="cat-header"><i data-lucide="utensils"></i> <a
+          href="appliances_page.html?category=Kitchen Appliances">Kitchen Appliances</a></div>
+      <ul class="cat-list">
+        <li><a href="appliances_page.html?search=Stand Mixers">Stand Mixers</a></li>
+        <li><a href="appliances_page.html?search=Microwave">Microwave Ovens</a></li>
+        <li><a href="appliances_page.html?search=Convection">Convection Ovens</a></li>
+        <li><a href="appliances_page.html?search=Blender">Power Blenders</a></li>
+        <li><a href="appliances_page.html?search=Air Fryer">Air Fryers</a></li>
+        <li><a href="appliances_page.html?search=Food Processor">Food Processors</a></li>
+        <li><a href="appliances_page.html?search=Coffee">Coffee Makers</a></li>
+        <li><a href="appliances_page.html?search=Toaster">Toasters & Grills</a></li>
+      </ul>
+    </div>
+
+    <div class="cat-group" onclick="this.classList.toggle('open')">
+      <div class="cat-header"><i data-lucide="wind"></i> <a
+          href="appliances_page.html?category=Cleaning Appliances">Cleaning Appliances</a></div>
+      <ul class="cat-list">
+        <li><a href="appliances_page.html?search=Robot Vacuum">Robot Vacuums</a></li>
+        <li><a href="appliances_page.html?search=Steam Cleaner">Steam Cleaners</a></li>
+        <li><a href="appliances_page.html?search=Wet Vacuum">Wet/Dry Vacs</a></li>
+        <li><a href="appliances_page.html?search=Air Purifier">Air Purifiers</a></li>
+        <li><a href="appliances_page.html?search=Pressure Washer">Pressure Washers</a></li>
+        <li><a href="appliances_page.html?search=Handheld Vacuum">Handheld Vacuums</a></li>
+        <li><a href="appliances_page.html?search=Carpet Cleaner">Carpet Cleaners</a></li>
+        <li><a href="appliances_page.html?search=Window Cleaner">Window Cleaners</a></li>
+      </ul>
+    </div>
+
+    <div class="cat-group" onclick="this.classList.toggle('open')">
+      <div class="cat-header"><i data-lucide="thermometer"></i> <a
+          href="appliances_page.html?category=Heating Appliances">Heating & Cooling</a></div>
+      <ul class="cat-list">
+        <li><a href="appliances_page.html?search=Heater">Space Heaters</a></li>
+        <li><a href="appliances_page.html?search=Fan">Ceiling Fans</a></li>
+        <li><a href="appliances_page.html?search=Air Conditioner">Air Conditioners</a></li>
+        <li><a href="appliances_page.html?search=Dehumidifier">Dehumidifiers</a></li>
+        <li><a href="appliances_page.html?search=Cooler">Evaporative Coolers</a></li>
+        <li><a href="appliances_page.html?search=Heating Pad">Heating Pads</a></li>
+        <li><a href="appliances_page.html?search=Electric Blanket">Electric Blankets</a></li>
+        <li><a href="appliances_page.html?search=Portable AC">Portable AC Units</a></li>
+      </ul>
+    </div>
+
+    <div class="cat-group" onclick="this.classList.toggle('open')">
+      <div class="cat-header"><i data-lucide="scissors"></i> <a
+          href="appliances_page.html?category=Personal Care">Personal Care</a></div>
+      <ul class="cat-list">
+        <li><a href="appliances_page.html?search=Hair Dryer">Hair Dryers</a></li>
+        <li><a href="appliances_page.html?search=Straightener">Hair Straighteners</a></li>
+        <li><a href="appliances_page.html?search=Shaver">Electric Shavers</a></li>
+        <li><a href="appliances_page.html?search=Trimmer">Beard Trimmers</a></li>
+        <li><a href="appliances_page.html?search=Massage">Massage Guns</a></li>
+        <li><a href="appliances_page.html?search=Toothbrush">Toothbrushes</a></li>
+        <li><a href="appliances_page.html?search=Epilator">Epilators</a></li>
+        <li><a href="appliances_page.html?search=Skin Care">Skin Care Devices</a></li>
+      </ul>
+    </div>
+
+    <div class="cat-group" onclick="this.classList.toggle('open')">
+      <div class="cat-header"><i data-lucide="home"></i> <a href="appliances_page.html?category=Smart Home">Smart
+          Home</a></div>
+      <ul class="cat-list">
+        <li><a href="appliances_page.html?search=Smart Light">Smart Lights</a></li>
+        <li><a href="appliances_page.html?search=Smart Plug">Smart Plugs</a></li>
+        <li><a href="appliances_page.html?search=Camera">Security Cameras</a></li>
+        <li><a href="appliances_page.html?search=Thermostat">Smart Thermostats</a></li>
+        <li><a href="appliances_page.html?search=Voice Assistant">Voice Assistants</a></li>
+        <li><a href="appliances_page.html?search=Lock">Smart Locks</a></li>
+        <li><a href="appliances_page.html?search=Robot Mop">Robot Mops</a></li>
+        <li><a href="appliances_page.html?search=Sensor">Smart Sensors</a></li>
+      </ul>
+    </div>
+
+    <div class="cat-group" onclick="this.classList.toggle('open')">
+      <div class="cat-header"><i data-lucide="zap"></i> <a href="appliances_page.html?category=Other Appliances">Other
+          Appliances</a></div>
+      <ul class="cat-list">
+        <li><a href="appliances_page.html?search=Water Purifier">Water Purifiers</a></li>
+        <li><a href="appliances_page.html?search=Iron">Irons & Steamers</a></li>
+        <li><a href="appliances_page.html?search=Sewing">Sewing Machines</a></li>
+        <li><a href="appliances_page.html?search=Kettle">Electric Kettles</a></li>
+        <li><a href="appliances_page.html?search=Rice Cooker">Rice Cookers</a></li>
+        <li><a href="appliances_page.html?search=Grill">Indoor Grills</a></li>
+        <li><a href="appliances_page.html?search=Waffle">Waffle Makers</a></li>
+        <li><a href="appliances_page.html?search=Steamer">Food Steamers</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Link the new stylesheet -->
+  <link rel="stylesheet" href="../styles/appliances.css">
+
+  <main class="catalog-container">
+    <!-- Sidebar Mask for Mobile -->
+    <div class="sidebar-mask" id="sidebarMask" onclick="toggleFilters()"></div>
+
+    <!-- Sidebar Filters -->
+    <!-- Sidebar Filters -->
+    <aside class="catalog-sidebar" id="catalogSidebar">
+
+      <!-- Header with Clear All -->
+      <div class="filter-header-sticky">
+        <span class="filter-main-title">Filters</span>
+        <button id="clearAllFilters" class="btn-clear-all" style="display:none;">Clear All</button>
+      </div>
+
+      <!-- Categories (Dynamic) -->
+      <div class="filter-group">
+        <div class="filter-title" onclick="toggleFilterGroup(this)">
+          Category <i data-lucide="chevron-down"></i>
+        </div>
+        <div class="filter-options" id="categoryFilters">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Price Range -->
+      <div class="filter-group">
+        <div class="filter-title" onclick="toggleFilterGroup(this)">
+          Price (UZS) <i data-lucide="chevron-down"></i>
+        </div>
+        <div class="filter-content-pad">
+          <div class="slider-container">
+            <div class="slider-track"></div>
+            <input type="range" class="range-min" min="0" max="10000000" value="0" step="50000">
+            <input type="range" class="range-max" min="0" max="10000000" value="10000000" step="50000">
+          </div>
+          <div class="price-inputs">
+            <input type="number" id="priceMin" placeholder="Min" min="0">
+            <span>-</span>
+            <input type="number" id="priceMax" placeholder="Max" min="0">
+          </div>
+        </div>
+      </div>
+
+      <!-- Badges / Special Offers -->
+      <div class="filter-group">
+        <div class="filter-title" onclick="toggleFilterGroup(this)">
+          Special Offers <i data-lucide="chevron-down"></i>
+        </div>
+        <div class="filter-options" id="badgeFilters">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Brands (Dynamic) -->
+      <div class="filter-group">
+        <div class="filter-title" onclick="toggleFilterGroup(this)">
+          Brand <i data-lucide="chevron-down"></i>
+        </div>
+        <!-- Search within brands if list is long? For now plain list -->
+        <div class="filter-options scrollable-options" id="brandFilters">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Rating -->
+      <div class="filter-group">
+        <div class="filter-title" onclick="toggleFilterGroup(this)">
+          Rating <i data-lucide="chevron-down"></i>
+        </div>
+        <div class="filter-options" id="ratingFilters">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Features (Dynamic) -->
+      <div class="filter-group">
+        <div class="filter-title" onclick="toggleFilterGroup(this)">
+          Features <i data-lucide="chevron-down"></i>
+        </div>
+        <div class="filter-options" id="featureFilters">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Mobile Close Button -->
+      <div class="sidebar-footer-mobile">
+        <button class="btn-primary" onclick="toggleFilters()" style="width:100%;">Show Results</button>
+      </div>
+    </aside>
+
+    <!-- Main Catalog Content -->
+    <div class="catalog-content">
+      <div class="catalog-header">
+        <div class="breadcrumbs" id="breadcrumbs">Home / Appliances / All</div>
+        <h1 class="page-title" id="pageTitle">All Products</h1>
+      </div>
+
+      <div class="catalog-toolbar">
+        <button class="btn-filter-mobile" onclick="toggleFilters()">
+          <i data-lucide="sliders-horizontal"></i> Filters
+        </button>
+
+        <div class="sort-options">
+          <span>Sort by:</span>
+          <select id="sortSelect" style="padding: 5px 10px; border-radius: 6px; border: 1px solid #ddd; outline:none;">
+            <option value="popular">Popular</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="new">New Arrivals</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Dynamic Product Grid - loaded from src/scripts/appliances.js -->
+      <div class="product-grid"></div>
+
+      <!-- Scripts (Order matters!) -->
+      <script src="../data/products.js"></script>
+      <script src="../scripts/auth.js"></script>
+      <script src="../scripts/cartManager.js"></script>
+      <script src="../scripts/wishlistManager.js"></script>
+      <script src="../scripts/appliances.js"></script>
+
+
+      <!-- Pagination -->
+      <div class="pagination">
+        <button class="page-btn active">1</button>
+        <button class="page-btn">2</button>
+        <button class="page-btn">3</button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="main-footer">
+    <div class="footer-container">
+      <div class="footer-col">
+        <h4>Shopping Guide</h4>
+        <ul>
+          <li><a href="#">How to buy</a></li>
+          <li><a href="#">Payment methods</a></li>
+          <li><a href="#">Shipping & Delivery</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Customer Service</h4>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Refund Policy</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Stay Connected</h4>
+        <div class="social-icons">
+          <i data-lucide="facebook"></i>
+          <i data-lucide="instagram"></i>
+          <i data-lucide="twitter"></i>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Tech House. All rights reserved.
+    </div>
+  </footer>
+
+  <div class="mobile-bar">
+    <a href="../../index.html" class="mobile-nav-item">
+      <i data-lucide="home"></i>
+      <span>Home</span>
+    </a>
+    <div class="mobile-nav-item" onclick="toggleMenu()">
+      <i data-lucide="layout-grid"></i>
+      <span>Catalog</span>
+    </div>
+    <a href="wishlist_page.html" class="mobile-nav-item">
+      <i data-lucide="heart"></i>
+      <span>Wishlist</span>
+    </a>
+    <a href="cart_page.html" class="mobile-nav-item">
+      <i data-lucide="shopping-cart"></i>
+      <span>Cart</span>
+      <span class="cart-badge">0</span>
+    </a>
+    <a href="auth_page.html" class="mobile-nav-item">
+      <i data-lucide="user"></i>
+      <span>Account</span>
+    </a>
+  </div>
+
+  <!-- Data & Logic -->
+  <script src="../data/products.js"></script>
+  <script src="../scripts/toast.js"></script>
+  <script src="../scripts/appliances.js"></script>
+</body>
+
+</html>

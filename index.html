@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech House | Premium Appliances</title>
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="./src/styles/global.css">
+    <link rel="stylesheet" href="./src/styles/home.css">
+    <link rel="stylesheet" href="./src/styles/toast.css">
+    <link rel="icon" href="./src/photos/icons/logo_w.svg">
+</head>
+
+<body>
+
+    <!-- OVERLAYS -->
+    <div class="sidebar-overlay" id="overlay" onclick="toggleMenu()"></div>
+
+    <!-- MOBILE SIDEBAR MENU -->
+    <div class="mobile-sidebar" id="mobileSidebar">
+        <div class="sidebar-mobile-header">
+            <span>Product Categories</span>
+            <i data-lucide="x" onclick="toggleMenu()"></i>
+        </div>
+
+        <div class="cat-group" onclick="this.classList.toggle('open')">
+            <div class="cat-header"><i data-lucide="utensils"></i> <a
+                    href="./src/pages/appliances_page.html?category=Kitchen Appliances">Kitchen Appliances</a></div>
+            <ul class="cat-list">
+                <li><a href="./src/pages/appliances_page.html?search=Stand Mixers">Stand Mixers</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Microwave">Microwave Ovens</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Convection">Convection Ovens</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Blender">Power Blenders</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Air Fryer">Air Fryers</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Food Processor">Food Processors</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Coffee">Coffee Makers</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Toaster">Toasters & Grills</a></li>
+            </ul>
+        </div>
+
+        <div class="cat-group" onclick="this.classList.toggle('open')">
+            <div class="cat-header"><i data-lucide="wind"></i> <a
+                    href="./src/pages/appliances_page.html?category=Cleaning Appliances">Cleaning Appliances</a></div>
+            <ul class="cat-list">
+                <li><a href="./src/pages/appliances_page.html?search=Robot Vacuum">Robot Vacuums</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Steam Cleaner">Steam Cleaners</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Wet Vacuum">Wet/Dry Vacuums</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Air Purifier">Air Purifiers</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Pressure Washer">Pressure Washers</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Handheld Vacuum">Handheld Vacuums</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Carpet Cleaner">Carpet Cleaners</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Window Cleaner">Window Cleaners</a></li>
+            </ul>
+        </div>
+
+        <div class="cat-group" onclick="this.classList.toggle('open')">
+            <div class="cat-header"><i data-lucide="thermometer"></i> <a
+                    href="./src/pages/appliances_page.html?category=Heating Appliances">Heating & Cooling</a></div>
+            <ul class="cat-list">
+                <li><a href="./src/pages/appliances_page.html?search=Heater">Space Heaters</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Fan">Ceiling Fans</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Air Conditioner">Air Conditioners</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Dehumidifier">Dehumidifiers</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Cooler">Evaporative Coolers</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Heating Pad">Heating Pads</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Electric Blanket">Electric Blankets</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Portable AC">Portable AC Units</a></li>
+            </ul>
+        </div>
+
+        <div class="cat-group" onclick="this.classList.toggle('open')">
+            <div class="cat-header"><i data-lucide="scissors"></i> <a
+                    href="./src/pages/appliances_page.html?category=Personal Care">Personal Care</a></div>
+            <ul class="cat-list">
+                <li><a href="./src/pages/appliances_page.html?search=Hair Dryer">Hair Dryers</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Straightener">Hair Straighteners</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Shaver">Electric Shavers</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Trimmer">Beard Trimmers</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Massage">Massage Guns</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Toothbrush">Toothbrushes</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Epilator">Epilators</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Skin Care">Skin Care Devices</a></li>
+            </ul>
+        </div>
+
+        <div class="cat-group" onclick="this.classList.toggle('open')">
+            <div class="cat-header"><i data-lucide="home"></i> <a
+                    href="./src/pages/appliances_page.html?category=Smart Home">Smart
+                    Home</a></div>
+            <ul class="cat-list">
+                <li><a href="./src/pages/appliances_page.html?search=Smart Light">Smart Lights</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Smart Plug">Smart Plugs</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Camera">Security Cameras</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Thermostat">Smart Thermostats</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Voice Assistant">Voice Assistants</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Lock">Smart Locks</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Robot Mop">Robot Mops</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Sensor">Smart Sensors</a></li>
+            </ul>
+        </div>
+
+        <div class="cat-group" onclick="this.classList.toggle('open')">
+            <div class="cat-header"><i data-lucide="zap"></i> <a
+                    href="./src/pages/appliances_page.html?category=Other Appliances">Other
+                    Appliances</a></div>
+            <ul class="cat-list">
+                <li><a href="./src/pages/appliances_page.html?search=Water Purifier">Water Purifiers</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Iron">Irons & Steamers</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Sewing">Sewing Machines</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Kettle">Electric Kettles</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Rice Cooker">Rice Cookers</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Grill">Indoor Grills</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Waffle">Waffle Makers</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Steamer">Food Steamers</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- DESKTOP HEADER -->
+    <header class="main-header" id="mainHeader">
+        <nav class="navbar-container">
+            <a href="index.html" class="logo">
+                <img src="./src/photos/logo_black.png" alt="Logo" class="logo-dark">
+                <img src="./src/photos/logo_w.png" alt="Logo" class="logo-light">
+            </a>
+
+            <div class="desktop-catalog">
+                <button class="btn-catalog">
+                    <i data-lucide="layout-grid"></i> Catalog
+                </button>
+                <div class="mega-menu-desktop">
+                    <div class="menu-col">
+                        <h4><i data-lucide="utensils"></i> <a
+                                href="./src/pages/appliances_page.html?category=Kitchen Appliances">Kitchen
+                                Appliances</a></h4>
+                        <ul>
+                            <li><a href="./src/pages/appliances_page.html?search=Stand Mixers">Stand Mixers</a></li>
+                            <li><a href="./src/pages/appliances_page.html?search=Microwave">Microwave Ovens</a></li>
+                            <li><a href="./src/pages/appliances_page.html?search=Convection">Convection Ovens</a></li>
+                            <li><a href="./src/pages/appliances_page.html?search=Blender">Power Blenders</a></li>
+                            <li><a href="./src/pages/appliances_page.html?search=Air Fryer">Air Fryers</a></li>
+                            <li><a href="./src/pages/appliances_page.html?search=Food Processor">Food Processors</a>
+                            </li>
+                            <li><a href="./src/pages/appliances_page.html?search=Coffee">Coffee Makers</a></li>
+                            <li><a href="./src/pages/appliances_page.html?search=Toaster">Toasters & Grills</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu-col">
+                        <h4><i data-lucide="wind"></i> <a
+                                href="./src/pages/appliances_page.html?category=Cleaning Appliances">Cleaning
+                                Appliances</a></h4>
+                        <ul>
+                            <li><a href="./src/pages/appliances_page.html?search=Robot Vacuum">Robot Vacuums</a></li>
+                            <li><a href="./src/pages/appliances_page.html?search=Steam Cleaner">Steam Cleaners</a></li>
+                            <li><a href="./src/pages/appliances_page.html?search=Wet Vacuum">Wet/Dry Vacuums</a></li>
+                            <li><a href="./src/pages/appliances_page.html?search=Air Purifier">Air Purifiers</a></li>
+                            <li><a href="./src/pages/appliances_page.html?search=Pressure Washer">Pressure Washers</a>
+                            </li>
+                            <li><a href="./src/pages/appliances_page.html?search=Handheld Vacuum">Handheld Vacuums</a>
+                            </li>
+                            <li><a href="./src/pages/appliances_page.html?search=Carpet Cleaner">Carpet Cleaners</a>
+                            </li>
+                            <li><a href="./src/pages/appliances_page.html?search=Window Cleaner">Window Cleaners</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="menu-col">
+                        <h4><i data-lucide="thermometer"></i> <a
+                                href="./src/pages/appliances_page.html?category=Heating Appliances">Heating &
+                                Cooling</a></h4>
+                        <ul>
+                            <li><a href="./src/pages/appliances_page.html?search=Heater">Space Heaters</a></li>
+                            <li><a href="./src/pages/appliances_page.html?search=Fan">Ceiling Fans</a></li>
+                            <li><a href="./src/pages/appliances_page.html?search=Air Conditioner">Air Conditioners</a>
+                            </li>
+                            <li><a href="./src/pages/appliances_page.html?search=Dehumidifier">Dehumidifiers</a></li>
+                            <li><a href="./src/pages/appliances_page.html?search=Cooler">Evaporative Coolers</a></li>
+                            <li><a href="./src/pages/appliances_page.html?search=Heating Pad">Heating Pads</a></li>
+                            <li><a href="./src/pages/appliances_page.html?search=Electric Blanket">Electric Blankets</a>
+                            </li>
+                            <li><a href="./src/pages/appliances_page.html?search=Portable AC">Portable AC Units</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu-col">
+                        <h4><i data-lucide="scissors"></i> <a
+                                href="./src/pages/appliances_page.html?category=Personal Care">Personal Care</a>
+                        </h4>
+                        <ul>
+                            <li><a href="./src/pages/appliances_page.html?search=Hair Dryer">Hair Dryers</a></li>
+                            <li><a href="./src/pages/appliances_page.html?search=Straightener">Hair Straighteners</a>
+                            </li>
+                            <li><a href="./src/pages/appliances_page.html?search=Shaver">Electric Shavers</a></li>
+                            <li><a href="./src/pages/appliances_page.html?search=Trimmer">Beard Trimmers</a></li>
+                            <li><a href="./src/pages/appliances_page.html?search=Massage">Massage Guns</a></li>
+                            <li><a href="./src/pages/appliances_page.html?search=Toothbrush">Toothbrushes</a></li>
+                            <li><a href="./src/pages/appliances_page.html?search=Epilator">Epilators</a></li>
+                            <li><a href="./src/pages/appliances_page.html?search=Skin Care">Skin Care Devices</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu-col">
+                        <h4><i data-lucide="home"></i> <a
+                                href="./src/pages/appliances_page.html?category=Smart Home">Smart Home</a>
+                        </h4>
+                        <ul>
+                            <li><a href="./src/pages/appliances_page.html?search=Smart Light">Smart Lights</a></li>
+                            <li><a href="./src/pages/appliances_page.html?search=Smart Plug">Smart Plugs</a></li>
+                            <li><a href="./src/pages/appliances_page.html?search=Camera">Security Cameras</a></li>
+                            <li><a href="./src/pages/appliances_page.html?search=Thermostat">Smart Thermostats</a></li>
+                            <li><a href="./src/pages/appliances_page.html?search=Voice Assistant">Voice Assistants</a>
+                            </li>
+                            <li><a href="./src/pages/appliances_page.html?search=Lock">Smart Locks</a></li>
+                            <li><a href="./src/pages/appliances_page.html?search=Robot Mop">Robot Mops</a></li>
+                            <li><a href="./src/pages/appliances_page.html?search=Sensor">Smart Sensors</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu-col">
+                        <h4><i data-lucide="zap"></i> <a
+                                href="./src/pages/appliances_page.html?category=Other Appliances">Other
+                                Appliances</a>
+                        </h4>
+                        <ul>
+                            <li><a href="./src/pages/appliances_page.html?search=Water Purifier">Water Purifiers</a>
+                            </li>
+                            <li><a href="./src/pages/appliances_page.html?search=Iron">Irons & Steamers</a></li>
+                            <li><a href="./src/pages/appliances_page.html?search=Sewing">Sewing Machines</a></li>
+                            <li><a href="./src/pages/appliances_page.html?search=Kettle">Electric Kettles</a></li>
+                            <li><a href="./src/pages/appliances_page.html?search=Rice Cooker">Rice Cookers</a></li>
+                            <li><a href="./src/pages/appliances_page.html?search=Grill">Indoor Grills</a></li>
+                            <li><a href="./src/pages/appliances_page.html?search=Waffle">Waffle Makers</a></li>
+                            <li><a href="./src/pages/appliances_page.html?search=Steamer">Food Steamers</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="search-area">
+                <form class="search-form" id="searchForm">
+                    <input aria-label="Search products" type="text" id="searchInput" placeholder="I'm shopping for..."
+                        autocomplete="off">
+                    <button type="submit" class="search-btn"><i data-lucide="search"></i></button>
+                </form>
+                <div class="search-results-dropdown">
+                    <!-- Search results will be dynamically loaded here -->
+                </div>
+            </div>
+
+            <div class="user-nav">
+                <!-- User Account -->
+                <!-- User Account -->
+                <a href="./src/pages/auth_page.html" class="nav-link" id="nav-auth-link">
+                    <i data-lucide="user"></i> <span>Account</span>
+                </a>
+
+                <a href="./src/pages/wishlist_page.html" class="nav-link">
+                    <i data-lucide="heart"></i> <span>Wishlist</span>
+                </a>
+
+                <!-- Cart -->
+                <a href="./src/pages/cart_page.html" class="nav-link" style="position: relative;">
+                    <i data-lucide="shopping-cart"></i>
+                    Cart
+                    <span class="cart-badge" id="cart-count"
+                        style="display: none; background: red; color: white; font-size: 10px; border-radius: 50%; padding: 2px 6px;">0</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <script src="./src/scripts/auth.js"></script>
+    <script src="./src/scripts/cartManager.js"></script>
+
+    <!-- Mobile Sidebar -->
+    <div class="mobile-sidebar" id="mobileSidebar">
+        <div class="sidebar-mobile-header">
+            <span>Product Categories</span>
+            <i data-lucide="x" onclick="toggleMenu()"></i>
+        </div>
+
+        <div class="cat-group" onclick="this.classList.toggle('open')">
+            <div class="cat-header"><i data-lucide="utensils"></i><a
+                    href="./src/pages/appliances_page.html?category=Kitchen Appliances"> Kitchen
+                    Appliances</a></div>
+            <ul class="cat-list">
+                <li><a href="./src/pages/appliances_page.html?search=Stand Mixers">Stand Mixers</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Microwave">Microwave Ovens</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Convection">Convection Ovens</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Blender">Power Blenders</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Air Fryer">Air Fryers</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Food Processor">Food Processors</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Coffee">Coffee Makers</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Toaster">Toasters & Grills</a></li>
+            </ul>
+        </div>
+
+        <div class="cat-group" onclick="this.classList.toggle('open')">
+            <div class="cat-header"><i data-lucide="wind"></i><a
+                    href="./src/pages/appliances_page.html?category=Cleaning Appliances"> Cleaning Appliances</a></div>
+            <ul class="cat-list">
+                <li><a href="./src/pages/appliances_page.html?search=Robot Vacuum">Robot Vacuums</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Steam Cleaner">Steam Cleaners</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Wet Vacuum">Wet/Dry Vacs</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Air Purifier">Air Purifiers</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Pressure Washer">Pressure Washers</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Handheld Vacuum">Handheld Vacuums</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Carpet Cleaner">Carpet Cleaners</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Window Cleaner">Window Cleaners</a></li>
+            </ul>
+        </div>
+
+        <div class="cat-group" onclick="this.classList.toggle('open')">
+            <div class="cat-header"><i data-lucide="thermometer"></i><a
+                    href="./src/pages/appliances_page.html?category=Heating Appliances"> Heating & Cooling</a></div>
+            <ul class="cat-list">
+                <li><a href="./src/pages/appliances_page.html?search=Heater">Space Heaters</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Fan">Ceiling Fans</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Air Conditioner">Air Conditioners</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Dehumidifier">Dehumidifiers</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Cooler">Evaporative Coolers</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Heating Pad">Heating Pads</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Electric Blanket">Electric Blankets</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Portable AC">Portable AC Units</a></li>
+            </ul>
+        </div>
+
+        <div class="cat-group" onclick="this.classList.toggle('open')">
+            <div class="cat-header"><i data-lucide="scissors"></i><a
+                    href="./src/pages/appliances_page.html?category=Personal Care"> Personal Care</a></div>
+            <ul class="cat-list">
+                <li><a href="./src/pages/appliances_page.html?search=Hair Dryer">Hair Dryers</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Straightener">Hair Straighteners</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Shaver">Electric Shavers</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Trimmer">Beard Trimmers</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Massage">Massage Guns</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Toothbrush">Toothbrushes</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Epilator">Epilators</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Skin Care">Skin Care Devices</a></li>
+            </ul>
+        </div>
+
+        <div class="cat-group" onclick="this.classList.toggle('open')">
+            <div class="cat-header"><i data-lucide="home"></i><a
+                    href="./src/pages/appliances_page.html?category=Smart Home"> Smart Home</a></div>
+            <ul class="cat-list">
+                <li><a href="./src/pages/appliances_page.html?search=Smart Light">Smart Lights</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Smart Plug">Smart Plugs</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Camera">Security Cameras</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Thermostat">Smart Thermostats</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Voice Assistant">Voice Assistants</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Lock">Smart Locks</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Robot Mop">Robot Mops</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Sensor">Smart Sensors</a></li>
+            </ul>
+        </div>
+
+        <div class="cat-group" onclick="this.classList.toggle('open')">
+            <div class="cat-header"><i data-lucide="zap"></i><a
+                    href="./src/pages/appliances_page.html?category=Other Appliances"> Other Appliances</a></div>
+            <ul class="cat-list">
+                <li><a href="./src/pages/appliances_page.html?search=Water Purifier">Water Purifiers</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Iron">Irons & Steamers</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Sewing">Sewing Machines</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Kettle">Electric Kettles</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Rice Cooker">Rice Cookers</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Grill">Indoor Grills</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Waffle">Waffle Makers</a></li>
+                <li><a href="./src/pages/appliances_page.html?search=Steamer">Food Steamers</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- Hero Section -->
+        <div class="hero-wrapper">
+            <section class="hero-section">
+                <div class="hero-text">
+                    <span class="product-badge new large" style="position: static; display: inline-block;">New
+                        Collection 2026</span>
+                    <h1>Smart Living <span>Elevated.</span></h1>
+                    <p>Experience the future of home automation with our premium selection of smart appliances. Designed
+                        for efficiency, crafted for style.</p>
+                    <a href="./src/pages/appliances_page.html" class="hero-cta">Shop Collection <i
+                            data-lucide="arrow-right"></i></a>
+                </div>
+                <div class="hero-image-container">
+                    <img src="https://www.stelrad.com/wp-content/uploads/2024/08/shutterstock_2473408983-2.jpg"
+                        alt="Modern Smart Kitchen" class="hero-img">
+                </div>
+            </section>
+        </div>
+
+        <!-- Categories -->
+        <section class="content-section">
+            <div class="section-head">
+                <h2>Browse Categories</h2>
+                <a href="./src/pages/appliances_page.html" class="link-arrow">View All <i data-lucide="arrow-right"
+                        size="16"></i></a>
+            </div>
+
+            <div class="scroller-container">
+                <button class="nav-btn btn-prev" onclick="scrollSection('catScroll', -1)"><i
+                        data-lucide="chevron-left"></i></button>
+
+                <div class="snap-track" id="catScroll">
+                    <a href="./src/pages/appliances_page.html" class="card-item category-card"
+                        style="background-image: url('https://fooddrinklife.com/wp-content/uploads/2023/08/small-kitchen-appliances-dp.jpg');">
+                        <div class="cat-info">
+                            <h3>Kitchen</h3>
+                        </div>
+                    </a>
+                    <a href="./src/pages/appliances_page.html" class="card-item category-card"
+                        style="background-image: url('https://cdn.thewirecutter.com/wp-content/media/2024/01/washerdryers-2048px-electroluxvignette600series.jpg?auto=webp&quality=75&width=1024');">
+                        <div class="cat-info">
+                            <h3>Laundry</h3>
+                        </div>
+                    </a>
+                    <a href="./src/pages/appliances_page.html" class="card-item category-card"
+                        style="background-image: url('https://www.yankodesign.com/images/design_news/2023/05/10-best-home-cleaning-appliances-that-saves-you-time-and-sanity/Top-10-Cleaning-Appliances_Vacuum_5.jpg');">
+                        <div class="cat-info">
+                            <h3>Cleaning</h3>
+                        </div>
+                    </a>
+                    <a href="./src/pages/appliances_page.html" class="card-item category-card"
+                        style="background-image: url('https://pwhomeimprovement.com/wp-content/uploads/2021/10/Free-standing-electric-heaters.jpg');">
+                        <div class="cat-info">
+                            <h3>Climate</h3>
+                        </div>
+                    </a>
+                    <a href="./src/pages/appliances_page.html" class="card-item category-card"
+                        style="background-image: url('https://m.media-amazon.com/images/G/37/Orange/Consumables/Beauty/PCA/banner_mob_en_2.jpg');">
+                        <div class="cat-info">
+                            <h3>Personal Care</h3>
+                        </div>
+                    </a>
+                    <!-- Extra card to show scroll -->
+                    <a href="./src/pages/appliances_page.html" class="card-item category-card"
+                        style="background-image: url('https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&q=80');">
+                        <div class="cat-info">
+                            <h3>Accessories</h3>
+                        </div>
+                    </a>
+                </div>
+
+                <button class="nav-btn btn-next" onclick="scrollSection('catScroll', 1)"><i
+                        data-lucide="chevron-right"></i></button>
+            </div>
+        </section>
+
+        <!-- Popular Products -->
+        <section class="content-section" id="featured">
+            <div class="section-head">
+                <div>
+                    <h2>Trending Now</h2>
+                    <p style="color: #666; margin-top: 5px;">Top rated products by our customers</p>
+                </div>
+                <a href="#" class="link-arrow">See Bestsellers <i data-lucide="arrow-right" size="16"></i></a>
+            </div>
+
+            <div class="scroller-container">
+                <button class="nav-btn btn-prev" onclick="scrollSection('prodScroll', -1)"><i
+                        data-lucide="chevron-left"></i></button>
+
+                <div class="snap-track" id="prodScroll">
+                    <!-- Dynamic Trending Products Loaded Here -->
+                </div>
+                <button class="nav-btn btn-next" onclick="scrollSection('prodScroll', 1)"><i
+                        data-lucide="chevron-right"></i></button>
+            </div>
+        </section>
+
+        <!-- New Arrivals Section -->
+        <section class="content-section" id="new-arrivals">
+            <div class="section-head">
+                <div>
+                    <h2>New Arrivals</h2>
+                    <p style="color: #666; margin-top: 5px;">The latest tech for your home</p>
+                </div>
+                <!-- <a href="#" class="link-arrow">View All <i data-lucide="arrow-right" size="16"></i></a> -->
+            </div>
+
+            <div class="scroller-container">
+                <button class="nav-btn btn-prev" onclick="scrollSection('newScroll', -1)"><i
+                        data-lucide="chevron-left"></i></button>
+
+                <div class="snap-track" id="newScroll">
+                    <!-- Dynamic New Products Loaded Here -->
+                </div>
+
+                <button class="nav-btn btn-next" onclick="scrollSection('newScroll', 1)"><i
+                        data-lucide="chevron-right"></i></button>
+            </div>
+        </section>
+
+        <!-- Home Information Tabs (About Us & Membership) -->
+        <section class="info-tabs-section">
+            <div class="tabs-header">
+                <button class="home-tab-btn active" onclick="switchHomeTab('about')">About Us</button>
+                <button class="home-tab-btn" onclick="switchHomeTab('membership')">Memberships</button>
+            </div>
+
+            <!-- About Us Content -->
+            <div id="home-tab-about" class="home-tab-content active">
+
+                <!-- Hero / Story -->
+                <div class="about-grid">
+                    <div class="about-text">
+                        <h4>Our Story</h4>
+                        <h2>Bringing the World <br>to Your <span>Doorstep.</span></h2>
+                        <p class="about-hero-text">
+                            Tech House began in <strong>Tashkent</strong> with a simple mission: to eliminate the
+                            boundaries between Uzbek homes and world-class technology.
+                            We realized that premium appliances were often inaccessible or overpriced.
+                        </p>
+                        <p class="about-hero-text">
+                            Today, we source directly from global manufacturers to bring you <strong>Samsung, LG, Bosch,
+                                and more</strong> at fair prices, fully backed by local support.
+                        </p>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&q=80"
+                            alt="Tech House Showroom">
+                        <div class="est-badge">
+                            <div class="year">Est. 2020</div>
+                            <div class="loc">Serving Tashkent</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats Row -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-number">5k+</span>
+                        <span class="stat-label">Happy Clients</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">120+</span>
+                        <span class="stat-label">Products</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Support</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Genuine</span>
+                    </div>
+                </div>
+
+                <!-- Features Grid -->
+                <div class="features-grid">
+                    <div class="feature-box">
+                        <div class="feature-icon"><i data-lucide="truck" size="24"></i></div>
+                        <div class="feature-content">
+                            <h4>Fast Delivery</h4>
+                            <p>We deliver across Tashkent within 24 hours and nationwide within 3 days.</p>
+                        </div>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon"><i data-lucide="shield-check" size="24"></i></div>
+                        <div class="feature-content">
+                            <h4>Official Warranty</h4>
+                            <p>Every product comes with a manufacturer warranty and our service guarantee.</p>
+                        </div>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon"><i data-lucide="credit-card" size="24"></i></div>
+                        <div class="feature-content">
+                            <h4>Flexible Payment</h4>
+                            <p>Pay by cash, card (UzCard/Humo), or via installment plans.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact / Visit Box -->
+                <div class="contact-box">
+                    <div>
+                        <h3 class="contact-title">Visit Our Showroom</h3>
+                        <div class="contact-info-row">
+                            <div class="contact-icon-circle"><i data-lucide="map-pin" size="20"></i></div>
+                            <div>
+                                <div class="contact-text-main">Tashkent City</div>
+                                <div class="contact-text-sub">Amir Temur Avenue, 15</div>
+                            </div>
+                        </div>
+                        <div class="contact-info-row">
+                            <div class="contact-icon-circle"><i data-lucide="clock" size="20"></i></div>
+                            <div>
+                                <div class="contact-text-main">Working Hours</div>
+                                <div class="contact-text-sub">Mon - Sun: 09:00 - 21:00</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="call-cta">
+                        <div class="label">Have questions? Call us</div>
+                        <div class="number">+998 93 911 04 41</div>
+                        <a href="tel:+998939110441" class="btn-call">Call Now</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Memberships Content -->
+            <div id="home-tab-membership" class="home-tab-content">
+                <div class="membership-grid">
+
+                    <!-- Bronze -->
+                    <div class="plan-card">
+                        <h3 class="plan-name" style="color: #cd7f32;">Bronze</h3>
+                        <p class="plan-price">Free</p>
+                        <ul class="plan-features">
+                            <li>✓ Basic loyalty points</li>
+                            <li>✓ Access to regular discounts</li>
+                        </ul>
+                        <button class="btn-plan"
+                            style="background: #f9f9f9; color: #999; border: 1px solid #ddd; cursor: not-allowed;"
+                            disabled>Current Plan</button>
+                    </div>
+
+                    <!-- Silver -->
+                    <div class="plan-card">
+                        <h3 class="plan-name" style="color: #6d6d6d;">Silver</h3>
+                        <p class="plan-price">128,000 UZS<span>/mo</span></p>
+                        <ul class="plan-features">
+                            <li>✓ <strong>2x</strong> Loyalty Points</li>
+                            <li>✓ Priority Support</li>
+                            <li>✓ Monthly Exclusive Offers</li>
+                        </ul>
+                        <button class="btn-plan" style="background: #6d6d6d; color: white;"
+                            onclick="subscribeToPlan('silver')">Subscribe Silver</button>
+                    </div>
+
+                    <!-- Gold -->
+                    <div class="plan-card popular">
+                        <div class="badge-pop">BEST VALUE</div>
+                        <h3 class="plan-name" style="color: #ffd700;">Gold</h3>
+                        <p class="plan-price" style="color: var(--primary-red);">255,000 UZS<span>/mo</span></p>
+                        <ul class="plan-features">
+                            <li>✓ <strong>5x</strong> Loyalty Rewards</li>
+                            <li>✓ <strong>Free Delivery</strong></li>
+                            <li>✓ Early Access to New Products</li>
+                        </ul>
+                        <button class="btn-plan"
+                            style="background: linear-gradient(to right, #ffd700, #ffb300); color: #fff;"
+                            onclick="subscribeToPlan('gold')">Subscribe Gold</button>
+                    </div>
+
+                    <!-- Business -->
+                    <div class="plan-card">
+                        <h3 class="plan-name" style="color: var(--primary-blue);">Business</h3>
+                        <p class="plan-price">Custom</p>
+                        <ul class="plan-features">
+                            <li>✓ Bulk Purchasing</li>
+                            <li>✓ Corporate Pricing</li>
+                            <li>✓ Tax Invoices</li>
+                        </ul>
+                        <button class="btn-plan"
+                            style="border: 1px solid var(--primary-blue); background: white; color: var(--primary-blue);"
+                            onclick="window.location.href='mailto:business@techhouse.uz'">Contact Sales</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Brands Marquee -->
+        <section class="brand-section">
+            <div class="marquee-container">
+                <div class="marquee-track">
+                    <!-- Duplicated specifically for infinite scroll effect (CSS keyframes need enough width) -->
+                    <img src="https://www.pngplay.com/wp-content/uploads/3/Samsung-Logo-Transparent-Background.png"
+                        alt="Samsung">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/LG_logo_%282014%29.svg/1280px-LG_logo_%282014%29.svg.png"
+                        alt="LG">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzeaRbiYHshyDgcv9QDiK84eiYodSuUMTmeQ&s"
+                        alt="Bosch">
+                    <img src="https://1000logos.net/wp-content/uploads/2017/05/Phillips-Logo.jpg" alt="Philips">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Xiaomi_logo_%282021-%29.svg"
+                        alt="Xiaomi">
+                    <img src="https://i.pinimg.com/736x/09/4b/3a/094b3a25c604855730a9d81625433fb4.jpg" alt="Haier">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Panasonic_logo_%28Blue%29.svg/960px-Panasonic_logo_%28Blue%29.svg.png"
+                        alt="Panasonic">
+                    <!-- Repeat -->
+                    <img src="https://www.pngplay.com/wp-content/uploads/3/Samsung-Logo-Transparent-Background.png"
+                        alt="Samsung">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/LG_logo_%282014%29.svg/1280px-LG_logo_%282014%29.svg.png"
+                        alt="LG">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzeaRbiYHshyDgcv9QDiK84eiYodSuUMTmeQ&s"
+                        alt="Bosch">
+                    <img src="https://1000logos.net/wp-content/uploads/2017/05/Phillips-Logo.jpg" alt="Philips">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Xiaomi_logo_%282021-%29.svg"
+                        alt="Xiaomi">
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer (Global) -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h4>Shopping Guide</h4>
+                <ul>
+                    <li><a href="#">How to buy</a></li>
+                    <li><a href="#">Payment methods</a></li>
+                    <li><a href="#">Shipping & Delivery</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Customer Service</h4>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Refund Policy</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Stay Connected</h4>
+                <div class="social-icons">
+                    <i data-lucide="facebook"></i>
+                    <i data-lucide="instagram"></i>
+                    <i data-lucide="twitter"></i>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Tech House. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Mobile Bottom Bar -->
+    <div class="mobile-bar">
+        <a href="index.html" class="mobile-nav-item active">
+            <i data-lucide="home"></i>
+            <span>Home</span>
+        </a>
+        <div class="mobile-nav-item" onclick="toggleMenu()">
+            <i data-lucide="layout-grid"></i>
+            <span>Catalog</span>
+        </div>
+        <a href="src/pages/wishlist_page.html" class="mobile-nav-item">
+            <i data-lucide="heart"></i>
+            <span>Wishlist</span>
+        </a>
+        <a href="src/pages/cart_page.html" class="mobile-nav-item">
+            <i data-lucide="shopping-cart"></i>
+            <span>Cart</span>
+            <span class="cart-badge">0</span>
+        </a>
+        <a href="src/pages/auth_page.html" class="mobile-nav-item">
+            <i data-lucide="user"></i>
+            <span>Account</span>
+        </a>
+    </div>
+
+    <!-- Scripts -->
+    <script src="./src/data/products.js"></script>
+    <script src="./src/scripts/cartManager.js"></script>
+    <script src="./src/scripts/wishlistManager.js"></script>
+    <script src="./src/scripts/home.js"></script>
+    <script>
+        // Initialize Icons
+        if (window.lucide) lucide.createIcons();
+
+        // Menu Toggle
+        function toggleMenu() {
+            const sidebar = document.getElementById('mobileSidebar');
+            const overlay = document.getElementById('overlay');
+            if (sidebar && overlay) {
+                sidebar.classList.toggle('active');
+                overlay.classList.toggle('active');
+                document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : 'auto';
+            }
+        }
+
+        // Header Scroll Effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('mainHeader');
+            if (header) {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            }
+        });
+
+        // Search Functionality
+        let searchTimeout;
+
+        function highlightText(text, query) {
+            if (!query) return text;
+            const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+            return text.replace(regex, '<span class="highlight">$1</span>');
+        }
+
+        function searchProducts(query) {
+            if (!query || query.length < 2) return [];
+
+            const searchTerms = query.toLowerCase().split(' ').filter(t => t.length > 0);
+
+            return window.products.filter(product => {
+                const searchableText = `
+                  ${product.name} 
+                  ${product.category} 
+                  ${product.brand} 
+                  ${product.description || ''}
+                `.toLowerCase();
+
+                return searchTerms.some(term => searchableText.includes(term));
+            }).sort((a, b) => {
+                const aNameMatch = a.name.toLowerCase().includes(query.toLowerCase());
+                const bNameMatch = b.name.toLowerCase().includes(query.toLowerCase());
+                if (aNameMatch && !bNameMatch) return -1;
+                if (!aNameMatch && bNameMatch) return 1;
+                return 0;
+            });
+        }
+
+        function showSearchResults(results, query) {
+            const dropdown = document.querySelector('.search-results-dropdown');
+            if (!dropdown) return;
+
+            if (results.length === 0) {
+                dropdown.innerHTML = `
+                  <div class="search-no-results">
+                    <i data-lucide="search-x"></i>
+                    <p>No products found for "${query}"</p>
+                    <p style="font-size: 12px; color: #999;">Try different keywords</p>
+                  </div>
+                `;
+                dropdown.style.display = 'block';
+                if (window.lucide) lucide.createIcons();
+                return;
+            }
+
+            const maxResults = 5;
+            const displayResults = results.slice(0, maxResults);
+            const hasMore = results.length > maxResults;
+
+            let html = '<div class="search-results">';
+
+            displayResults.forEach(product => {
+                const price = `${product.price.toLocaleString('en-US')} UZS`;
+                const image = Array.isArray(product.images) ? product.images[0] : (product.image ? product.image[0] : './src/assets/images/placeholder.jpg');
+                const highlightedName = highlightText(product.name, query);
+
+                html += `
+                  <a href="./src/pages/appliance_details_page.html?id=${product.id}" class="search-result-item">
+                    <img src="${image}" alt="${product.name}" class="search-result-image" onerror="this.src='./src/assets/images/placeholder.jpg'">
+                    <div class="search-result-details">
+                      <div class="search-result-name">${highlightedName}</div>
+                      <div class="search-result-meta">
+                        <span class="search-result-category">${product.category}</span>
+                      </div>
+                      <div class="search-result-price">${price}</div>
+                    </div>
+                  </a>
+                `;
+            });
+
+            if (hasMore) {
+                html += `
+                  <a href="./src/pages/appliances_page.html?search=${encodeURIComponent(query)}" class="search-see-more">
+                    See all ${results.length} results →
+                  </a>
+                `;
+            }
+
+            html += '</div>';
+            dropdown.innerHTML = html;
+            dropdown.style.display = 'block';
+            if (window.lucide) lucide.createIcons();
+        }
+
+        function handleSearchSubmit(e) {
+            e.preventDefault();
+            const input = document.getElementById('searchInput');
+            const query = input ? input.value.trim() : '';
+            if (query) {
+                window.location.href = `./src/pages/appliances_page.html?search=${encodeURIComponent(query)}`;
+            } else {
+                window.location.href = './src/pages/appliances_page.html';
+            }
+        }
+
+        // DOMContentLoaded Event Listener
+        document.addEventListener('DOMContentLoaded', () => {
+            // Catalog Button
+            const catalogBtn = document.querySelector('.btn-catalog');
+            if (catalogBtn) {
+                catalogBtn.onclick = () => window.location.href = './src/pages/appliances_page.html';
+            }
+
+            // Scroll Logic for Horizontal Sections
+            window.scrollSection = function (id, direction) {
+                const container = document.getElementById(id);
+                if (!container) return;
+                const scrollAmount = container.clientWidth * 0.7;
+                container.scrollBy({
+                    left: direction * scrollAmount,
+                    behavior: 'smooth'
+                });
+            };
+
+            // Search functionality event listeners
+            const searchInput = document.getElementById('searchInput');
+            const searchForm = document.getElementById('searchForm');
+            const dropdown = document.querySelector('.search-results-dropdown');
+
+            if (searchInput && searchForm) {
+                searchInput.addEventListener('input', (e) => {
+                    const query = e.target.value.trim();
+                    clearTimeout(searchTimeout);
+
+                    if (query.length < 2) {
+                        if (dropdown) dropdown.style.display = 'none';
+                        return;
+                    }
+
+                    searchTimeout = setTimeout(() => {
+                        const results = searchProducts(query);
+                        showSearchResults(results, query);
+                    }, 300);
+                });
+
+                searchForm.addEventListener('submit', handleSearchSubmit);
+            }
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', (e) => {
+                const searchArea = document.querySelector('.search-area');
+                if (dropdown && searchArea && !searchArea.contains(e.target)) {
+                    dropdown.style.display = 'none';
+                }
+            });
+
+            // Mobile Menu Links
+            document.querySelectorAll('.cat-list a').forEach(link => {
+                link.addEventListener('click', toggleMenu);
+            });
+        });
+    </script>
+    <script src="src/scripts/toast.js"></script>
+    <script src="src/scripts/home.js"></script>
+</body>
+
+</html>
