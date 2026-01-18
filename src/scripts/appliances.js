@@ -10,6 +10,14 @@
  * - URL Parameter Sync
  */
 
+// Expose toggleMenu globally
+window.toggleMenu = function () {
+    const sidebar = document.getElementById('mobileSidebar');
+    const overlay = document.getElementById('overlay');
+    if (sidebar) sidebar.classList.toggle('active');
+    if (overlay) overlay.classList.toggle('active');
+};
+
 document.addEventListener('DOMContentLoaded', () => {
     // DOM Elements
     const productGrid = document.querySelector('.product-grid');
@@ -564,6 +572,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         cardLink.innerHTML = `
             <div class="card-item product-card">
+                <!-- Compare Button -->
+                <button class="btn-compare" data-id="${product.id}" onclick="event.preventDefault(); event.stopPropagation(); CompareManager.toggle('${product.id}')" title="Compare">
+                    <i data-lucide="scale" size="16"></i>
+                </button>
+
                 <div class="prod-img-box">
                     ${imageContent}
                     ${badgeHTML}
@@ -659,9 +672,277 @@ function renderSmartButton(productId, container) {
     if (window.lucide) window.lucide.createIcons({ root: container });
 }
 
-// Update smart buttons globally when cart changes
-window.addEventListener('cartChanged', (e) => {
-    const productId = e.detail.productId;
-    const containers = document.querySelectorAll(`[id^="cart-actions-${productId}"]`);
-    containers.forEach(container => renderSmartButton(productId, container));
+// --- COMPARISON FEATURE LOGIC ---
+
+const CompareManager = {
+    STORAGE_KEY: 'shop_compare_list',
+
+    // State
+    items: [], // Array of product IDs
+
+    init() {
+        this.load();
+        this.renderSidebar();
+        this.updateButtons();
+        // Render Sticky
+        this.renderStickyTrigger();
+
+        // Event Listeners
+        const btn = document.getElementById('btnCompareNow');
+        if (btn) btn.onclick = () => this.openModal();
+    },
+
+    load() {
+        const stored = localStorage.getItem(this.STORAGE_KEY);
+        if (stored) {
+            this.items = JSON.parse(stored);
+        }
+    },
+
+    save() {
+        localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.items));
+        this.renderSidebar();
+        this.updateButtons();
+        this.renderStickyTrigger();
+    },
+
+    updateButtons() {
+        // Reset all first
+        document.querySelectorAll('.btn-compare').forEach(btn => {
+            btn.classList.remove('active');
+            const icon = btn.querySelector('i');
+            if (icon) {
+                // Reset icon color
+                // Actually CSS handles color for .active, but if Lucide set inline styles we might need to clear them or re-render
+                // For simplified approach, we rely on CSS .btn-compare.active i { color: white }
+            }
+        });
+
+        // Set Active
+        this.items.forEach(id => {
+            const btn = document.querySelector(`.btn-compare[data-id="${id}"]`);
+            if (btn) btn.classList.add('active');
+        });
+    },
+
+    // Sticky Trigger Logic
+    renderStickyTrigger() {
+        let trigger = document.getElementById('compareStickyTrigger');
+
+        if (this.items.length === 0) {
+            if (trigger) trigger.remove(); // Hide if empty
+            return;
+        }
+
+        if (!trigger) {
+            trigger = document.createElement('div');
+            trigger.id = 'compareStickyTrigger';
+            trigger.className = 'compare-sticky-trigger';
+            trigger.onclick = () => window.toggleCompareSidebar();
+            trigger.innerHTML = `
+                <i data-lucide="scale" size="20"></i>
+                <span class="compare-sticky-count" id="stickyCount">0</span>
+            `;
+            document.body.appendChild(trigger);
+            if (window.lucide) window.lucide.createIcons();
+        }
+
+        const countSpan = document.getElementById('stickyCount');
+        if (countSpan) countSpan.textContent = this.items.length;
+    },
+
+    toggle(productId) {
+        const index = this.items.indexOf(productId);
+        if (index > -1) {
+            // Remove
+            this.items.splice(index, 1);
+            showToast("Removed from comparison", "info");
+        } else {
+            // Add (Limit 6)
+            if (this.items.length >= 6) {
+                showToast("Limit reached (Max 6). Remove an item first.", "warning");
+                return;
+            }
+            this.items.push(productId);
+            showToast("Added to comparison", "success");
+
+            // Auto-open sidebar
+            const sidebar = document.getElementById('compareSidebar');
+            if (this.items.length > 0 && sidebar) {
+                sidebar.classList.add('active');
+            }
+        }
+        this.save();
+    },
+
+    remove(productId) {
+        const index = this.items.indexOf(productId);
+        if (index > -1) {
+            this.items.splice(index, 1);
+            this.save();
+        }
+    },
+
+    getProducts() {
+        return this.items.map(id => window.products.find(p => p.id === id)).filter(Boolean);
+    },
+
+    renderSidebar() {
+        const container = document.getElementById('compareList');
+        const countSpan = document.getElementById('compareCount');
+        const products = this.getProducts();
+
+        if (countSpan) countSpan.textContent = products.length;
+        if (!container) return;
+
+        container.innerHTML = '';
+
+        const compareBtn = document.getElementById('btnCompareNow');
+        if (products.length === 0) {
+            container.innerHTML = '<div style="text-align:center; padding:20px; color:#999; display:flex; flex-direction:column; align-items:center; gap:10px;"><i data-lucide="scale" size="48" style="opacity:0.2"></i><p>Select products to compare</p></div>';
+            if (compareBtn) compareBtn.disabled = true;
+            if (window.lucide) window.lucide.createIcons();
+            return;
+        }
+
+        if (compareBtn) compareBtn.disabled = false;
+
+        products.forEach(p => {
+            const div = document.createElement('div');
+            div.className = 'compare-item';
+
+            let img = p.image;
+            if (Array.isArray(p.images) && p.images.length) img = p.images[0];
+            else if (Array.isArray(p.image)) img = p.image[0];
+
+            div.innerHTML = `
+                <img src="${img}" alt="${p.name}">
+                <div class="compare-item-info">
+                    <div class="compare-item-name">${p.name}</div>
+                    <div class="compare-item-cat">${p.category}</div>
+                </div>
+                <button class="compare-remove" onclick="CompareManager.remove('${p.id}')">
+                    <i data-lucide="trash-2" size="16"></i>
+                </button>
+            `;
+            container.appendChild(div);
+        });
+
+        if (window.lucide) window.lucide.createIcons();
+    },
+
+    updateButtons() {
+        document.querySelectorAll('.btn-compare').forEach(btn => {
+            const id = btn.dataset.id;
+            if (this.items.includes(id)) {
+                btn.classList.add('active');
+                btn.style.background = 'var(--primary-color)';
+                btn.style.color = 'white';
+            } else {
+                btn.classList.remove('active');
+                btn.style.background = ''; // Reset
+                btn.style.color = '';
+            }
+        });
+    },
+
+    openModal() {
+        const modal = document.getElementById('compareModal');
+        const tabsContainer = document.getElementById('compareTabs');
+        const tableContainer = document.getElementById('compareTableContainer');
+
+        const products = this.getProducts();
+        if (products.length === 0) return;
+
+        // Group by Category
+        const groups = {};
+        products.forEach(p => {
+            if (!groups[p.category]) groups[p.category] = [];
+            groups[p.category].push(p);
+        });
+
+        const categories = Object.keys(groups);
+
+        // Render Tabs
+        tabsContainer.innerHTML = '';
+        categories.forEach((cat, idx) => {
+            const tab = document.createElement('div');
+            tab.className = `modal-tab ${idx === 0 ? 'active' : ''}`;
+            tab.textContent = `${cat} (${groups[cat].length})`;
+            tab.onclick = () => {
+                document.querySelectorAll('.modal-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                this.renderTable(groups[cat], tableContainer);
+            };
+            tabsContainer.appendChild(tab);
+        });
+
+        // Initial Table
+        this.renderTable(groups[categories[0]], tableContainer);
+
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    },
+
+    renderTable(products, container) {
+        if (!products || products.length === 0) return;
+
+        const fields = [
+            { label: 'Brand', key: 'brand' },
+            { label: 'Price', key: 'price', format: (v) => v.toLocaleString() + ' UZS' },
+            { label: 'Rating', key: 'rating', format: (v) => `${v} ★` },
+        ];
+
+        let html = '<table class="compare-table"><thead><tr><th>Feature</th>';
+
+        products.forEach(p => {
+            let img = Array.isArray(p.images) && p.images[0] ? p.images[0] : (Array.isArray(p.image) ? p.image[0] : p.image);
+            html += `
+                <th>
+                    <img src="${img}" class="compare-prod-thumb" alt="">
+                    <span class="compare-prod-title">${p.name}</span>
+                    <div class="compare-prod-price">${p.price.toLocaleString()} UZS</div>
+                    <button class="btn-cart-sm" style="margin-top:5px; width:100%; border:1px solid #ddd;" onclick="window.CartManager.addItem('${p.id}', 1); showToast('Added to Cart', 'success')">
+                        Add to Cart
+                    </button>
+                </th>
+            `;
+        });
+        html += '</tr></thead><tbody>';
+
+        fields.forEach(field => {
+            html += `<tr><td>${field.label}</td>`;
+            products.forEach(p => {
+                let val = p[field.key] || '-';
+                if (field.format) val = field.format(val);
+                html += `<td>${val}</td>`;
+            });
+            html += '</tr>';
+        });
+
+        html += `<tr><td>Description</td>`;
+        products.forEach(p => {
+            html += `<td style="font-size:0.85rem; color:#666;">${p.description || 'No description'}</td>`;
+        });
+        html += `</tr>`;
+
+        html += '</tbody></table>';
+        container.innerHTML = html;
+    }
+};
+
+// Global Exposure
+window.toggleCompareSidebar = () => {
+    document.getElementById('compareSidebar').classList.toggle('active');
+};
+
+window.closeComparisonModal = () => {
+    document.getElementById('compareModal').classList.remove('active');
+    document.body.style.overflow = 'auto';
+};
+
+// Initialize CompareManager
+document.addEventListener('DOMContentLoaded', () => {
+    // Delay slightly to ensure product grid is rendered first
+    setTimeout(() => CompareManager.init(), 100);
 });
