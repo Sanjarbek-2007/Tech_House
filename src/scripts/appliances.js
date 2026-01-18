@@ -110,6 +110,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 5. Initial Application
         applyFilters();
+
+        // 6. Global Cart Listener
+        window.addEventListener('cartChanged', (e) => {
+            const { productId } = e.detail;
+            const container = document.getElementById(`cart-actions-${productId}`);
+            if (container) {
+                renderSmartButton(productId, container);
+            }
+        });
     }
 
     function extractMetadata() {
